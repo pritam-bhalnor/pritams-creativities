@@ -1,8 +1,46 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, ChangeEvent } from 'react';
+
+interface FormData {
+  leftSideLength: string;
+  rightSideLength: string;
+  bottomBaseLength: string;
+  topSlantLength: string;
+  numberOfPartitions: string;
+  measureFrom: 'left' | 'right';
+}
+
+interface Area {
+  sqFt: number;
+  guntha: number;
+}
+
+interface Cut {
+  k: number;
+  x: number;
+  y: number;
+  length: number;
+  sectionArea: Area;
+  initiatedFrom: string;
+}
+
+interface Partition {
+  partitionIndex: number;
+  leftSide: number;
+  rightSide: number;
+  bottomSide: number;
+  topSide: number;
+  area: Area;
+}
+
+interface Results {
+  totalArea: Area;
+  cuts: Cut[];
+  partitions: Partition[];
+}
 
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
-  const [formData, setFormData] = useState({
+  const [darkMode, setDarkMode] = useState<boolean>(false);
+  const [formData, setFormData] = useState<FormData>({
     leftSideLength: '',
     rightSideLength: '',
     bottomBaseLength: '',
@@ -10,9 +48,9 @@ function App() {
     numberOfPartitions: '',
     measureFrom: 'left'
   });
-  const [results, setResults] = useState(null);
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [results, setResults] = useState<Results | null>(null);
+  const [error, setError] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     // Check system preference or local storage
@@ -29,7 +67,7 @@ function App() {
     }
   }, [darkMode]);
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
@@ -61,15 +99,15 @@ function App() {
         body: JSON.stringify(inputs),
       });
 
-      const data = await response.json();
+      const data: Results & { error?: string } = await response.json();
 
       if (!response.ok) {
         throw new Error(data.error || 'Failed to calculate');
       }
 
       setResults(data);
-    } catch (err) {
-      setError(err.message);
+    } catch (err: any) {
+      setError(err.message || 'An unexpected error occurred');
     } finally {
       setLoading(false);
     }
@@ -122,7 +160,7 @@ function App() {
                     <input
                       type="number"
                       name={field.name}
-                      value={formData[field.name]}
+                      value={(formData as any)[field.name]}
                       onChange={handleChange}
                       placeholder={field.placeholder}
                       className="w-full px-4 py-3 rounded-xl bg-gray-50 dark:bg-slate-900/50 border border-gray-200 dark:border-slate-700 focus:border-primary-500 focus:ring-4 focus:ring-primary-500/20 outline-none transition-all font-medium"
@@ -138,7 +176,7 @@ function App() {
                       {['left', 'right'].map((side) => (
                         <button
                           key={side}
-                          onClick={() => setFormData({ ...formData, measureFrom: side })}
+                          onClick={() => setFormData({ ...formData, measureFrom: side as 'left' | 'right' })}
                           className={`py-3 px-4 rounded-xl font-medium capitalize transition-all ${
                             formData.measureFrom === side
                               ? 'bg-primary-500 text-white shadow-lg shadow-primary-500/30'
