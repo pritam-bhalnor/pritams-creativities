@@ -73,7 +73,7 @@ export const Home = () => {
         measureFrom: data.measureFrom
       };
 
-      const apiUrl = import.meta.env.VITE_API_URL ?? 'http://localhost:5000';
+      const apiUrl = import.meta.env.VITE_API_URL ?? 'http://localhost:4000';
       const response = await fetch(`${apiUrl}/calculate-cuts`, {
         method: 'POST',
         headers: {
