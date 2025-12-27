@@ -20,7 +20,7 @@ export const CalculatorForm: React.FC<CalculatorFormProps> = ({
 }) => {
   return (
     <section className="lg:col-span-4 space-y-6">
-      <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl rounded-3xl p-6 sm:p-8 shadow-2xl border border-white/20 dark:border-slate-700/50">
+      <div className="bg-white/80 dark:bg-slate-800/80 backdrop-blur-xl rounded-2xl sm:rounded-3xl p-5 sm:p-8 shadow-2xl border border-white/20 dark:border-slate-700/50">
         <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
           <span className="w-8 h-8 rounded-lg bg-primary-100 dark:bg-primary-900/50 flex items-center justify-center text-primary-600 dark:text-primary-400">📐</span>
           Dimensions
