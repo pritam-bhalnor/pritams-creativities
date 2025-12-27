@@ -249,9 +249,10 @@ export const ResultsDisplay: React.FC<ResultsDisplayProps> = ({
           <Dialog.Root open={isGraphOpen} onOpenChange={setIsGraphOpen}>
             <Dialog.Portal>
               <Dialog.Overlay className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 transition-all duration-200" />
-              <Dialog.Content className="fixed left-[50%] top-[50%] z-50 w-full max-w-4xl translate-x-[-50%] translate-y-[-50%] rounded-2xl bg-white dark:bg-slate-900 shadow-2xl duration-200 border border-gray-100 dark:border-slate-800 p-0 overflow-hidden outline-none">
+              <Dialog.Content className="fixed inset-0 z-50 flex items-center justify-center p-4 focus:outline-none">
+                <div className="w-full max-w-4xl bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-gray-100 dark:border-slate-800 flex flex-col max-h-[85vh] overflow-hidden animate-in zoom-in-95 duration-200">
                 
-                <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 dark:border-slate-800 bg-gray-50/50 dark:bg-slate-900">
+                <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 dark:border-slate-800 bg-gray-50/50 dark:bg-slate-900 shrink-0">
                   <Dialog.Title className="text-xl font-bold text-gray-900 dark:text-white">
                     Partition Layout
                   </Dialog.Title>
@@ -295,7 +296,7 @@ export const ResultsDisplay: React.FC<ResultsDisplayProps> = ({
                   </div>
                 </div>
 
-                <div className="p-6 overflow-auto max-h-[70vh] flex flex-col items-center bg-gray-50/30 dark:bg-slate-900/30 scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-slate-700">
+                <div className="p-6 overflow-y-auto flex flex-col items-center bg-gray-50/30 dark:bg-slate-900/30 scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-slate-700">
 
                    {formData && (
                      <div style={{ width: `${640 * zoomLevel}px`, transition: 'width 0.2s ease-out' }} className="mb-4">
@@ -315,6 +316,7 @@ export const ResultsDisplay: React.FC<ResultsDisplayProps> = ({
                    </p>
                 </div>
 
+               </div>
               </Dialog.Content>
             </Dialog.Portal>
           </Dialog.Root>

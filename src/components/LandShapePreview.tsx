@@ -277,7 +277,7 @@ export const LandShapePreview: React.FC<LandShapePreviewProps> = ({
               className="w-16 px-1 py-0.5 text-center text-xs font-bold bg-white dark:bg-slate-800 border border-primary-500 rounded shadow-sm focus:ring-2 focus:ring-primary-500 outline-none"
               autoFocus={side === 'bottom'} // Just a heuristic
             />
-            <span className="text-[9px] text-gray-500 bg-white/80 dark:bg-slate-900/80 px-1 rounded mt-0.5">{label}</span>
+            <span className="text-[9px] text-gray-900 dark:text-gray-100 font-bold bg-white/80 dark:bg-slate-900/80 px-1 rounded mt-0.5">{label}</span>
         </div>
       </foreignObject>
     );
