@@ -19,7 +19,7 @@ export const Header: React.FC = () => {
   }, [darkMode]);
 
   return (
-    <header className="flex justify-between items-start sm:items-center mb-8 sm:mb-12">
+    <header className="sticky top-0 z-40 flex justify-between items-start sm:items-center mb-8 py-4 bg-transparent backdrop-blur-md">
       <div>
         <h1 className="text-2xl sm:text-5xl font-extrabold bg-gradient-to-r from-primary-500 to-purple-600 bg-clip-text text-transparent tracking-tight leading-tight">
           Pritam's Creativities

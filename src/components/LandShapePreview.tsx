@@ -59,12 +59,12 @@ export const LandShapePreview: React.FC<LandShapePreviewProps> = ({
     if (!hasAllDimensions && !isEditing) {
       // Default square
       return {
-        path: `M 70 70 L 330 70 L 330 230 L 70 230 Z`, // Centered rectangle placeholder
+        path: `M 190 120 L 450 120 L 450 280 L 190 280 Z`, // Centered rectangle placeholder
         viewBox: `0 0 ${svgW} ${svgH}`,
-        pTL: { x: 70, y: 70 },
-        pTR: { x: 330, y: 70 },
-        pBL: { x: 70, y: 230 },
-        pBR: { x: 330, y: 230 },
+        pTL: { x: 190, y: 120 },
+        pTR: { x: 450, y: 120 },
+        pBL: { x: 190, y: 280 },
+        pBR: { x: 450, y: 280 },
         isValid: false,
         cutLines: [],
         partitionPolygons: []
@@ -375,27 +375,27 @@ export const LandShapePreview: React.FC<LandShapePreviewProps> = ({
             {(hasAllDimensions || isEditing) && (
               <>
                  {/* Bottom / Base Main Label */}
-                 {isEditing ? 
+                    {isEditing ? 
                     renderInput((pathData.pBL.x + pathData.pBR.x)/2, pathData.pBL.y + 20, bottom, 'bottom', labels.base) :
-                    <text x={(pathData.pBL.x + pathData.pBR.x)/2} y={pathData.pBL.y + 35} textAnchor="middle" className="text-[10px] font-medium fill-gray-500">{labels.base}: {bottom}</text>
+                    <text x={(pathData.pBL.x + pathData.pBR.x)/2} y={pathData.pBL.y + 35} textAnchor="middle" className="text-[10px] font-bold fill-gray-900 dark:fill-white">{labels.base}: {bottom}</text>
                  }
 
                  {/* Top Main Label */}
                  {isEditing ?
                     renderInput((pathData.pTL.x + pathData.pTR.x)/2, pathData.pTL.y - 25, top, 'top', labels.top) :
-                    <text x={(pathData.pTL.x + pathData.pTR.x)/2} y={pathData.pTL.y - 25} textAnchor="middle" className="text-[10px] font-medium fill-gray-500">{labels.top}: {top}</text>
+                    <text x={(pathData.pTL.x + pathData.pTR.x)/2} y={pathData.pTL.y - 25} textAnchor="middle" className="text-[10px] font-bold fill-gray-900 dark:fill-white">{labels.top}: {top}</text>
                  }
 
                  {/* Left Main Label */}
                  {isEditing ?
                     renderInput(pathData.pTL.x - 30, (pathData.pTL.y + pathData.pBL.y)/2, left, 'left', labels.left) :
-                    <text x={pathData.pTL.x - 70} y={(pathData.pTL.y + pathData.pBL.y)/2} textAnchor="middle" className="text-[10px] font-medium fill-gray-500">{labels.left}: {left}</text>
+                    <text x={pathData.pTL.x - 70} y={(pathData.pTL.y + pathData.pBL.y)/2} textAnchor="middle" className="text-[10px] font-bold fill-gray-900 dark:fill-white">{labels.left}: {left}</text>
                  }
 
                  {/* Right Main Label */}
                  {isEditing ?
                     renderInput(pathData.pTR.x + 30, (pathData.pTR.y + pathData.pBR.y)/2, right, 'right', labels.right) :
-                    <text x={pathData.pTR.x + 55} y={(pathData.pTR.y + pathData.pBR.y)/2} textAnchor="middle" className="text-[10px] font-medium fill-gray-500">{labels.right}: {right}</text>
+                    <text x={pathData.pTR.x + 55} y={(pathData.pTR.y + pathData.pBR.y)/2} textAnchor="middle" className="text-[10px] font-bold fill-gray-900 dark:fill-white">{labels.right}: {right}</text>
                  }
               </>
             )}

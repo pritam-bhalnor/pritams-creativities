@@ -75,17 +75,26 @@ export const ResultsDisplay: React.FC<ResultsDisplayProps> = ({
                       </span>
                    </div>
                    
-                   <button
+                   <div
+                    role="button"
+                    tabIndex={0}
                     onClick={(e) => {
                       e.stopPropagation();
                       setIsGraphOpen(true);
                     }}
-                    className="shrink-0 flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 text-xs sm:text-sm font-bold border border-primary-100 dark:border-primary-800/30 hover:bg-primary-100 dark:hover:bg-primary-900/40 transition-all shadow-sm active:scale-95"
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.stopPropagation();
+                        e.preventDefault();
+                        setIsGraphOpen(true);
+                      }
+                    }}
+                    className="shrink-0 flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary-50 dark:bg-primary-900/20 text-primary-600 dark:text-primary-400 text-xs sm:text-sm font-bold border border-primary-100 dark:border-primary-800/30 hover:bg-primary-100 dark:hover:bg-primary-900/40 transition-all shadow-sm active:scale-95 cursor-pointer"
                     title="View Partition Graph"
                    >
                      <PieChart className="w-4 h-4" />
                      <span>View Graph</span>
-                   </button>
+                   </div>
                 </div>
               </AccordionTrigger>
               <AccordionContent className="pt-4">

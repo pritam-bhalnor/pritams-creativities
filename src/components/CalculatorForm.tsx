@@ -182,10 +182,11 @@ export const CalculatorForm: React.FC<CalculatorFormProps> = ({
 
       <Dialog.Root open={isPreviewOpen} onOpenChange={setIsPreviewOpen}>
         <Dialog.Portal>
-          <Dialog.Overlay className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 transition-all duration-200" />
-          <Dialog.Content className="fixed left-[50%] top-[50%] z-50 w-full max-w-lg translate-x-[-50%] translate-y-[-50%] rounded-2xl bg-white dark:bg-slate-900 shadow-2xl duration-200 border border-gray-100 dark:border-slate-800 p-0 overflow-hidden outline-none">
+          <Dialog.Overlay className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50" />
+          <Dialog.Content className="fixed inset-0 z-50 flex items-center justify-center p-4 focus:outline-none">
+            <div className="w-full max-w-lg bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-gray-100 dark:border-slate-800 flex flex-col max-h-[85vh] animate-in zoom-in-95 duration-200">
             
-            <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 dark:border-slate-800 bg-gray-50/50 dark:bg-slate-900">
+            <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 dark:border-slate-800 bg-gray-50/50 dark:bg-slate-900 shrink-0">
               <Dialog.Title className="text-xl font-bold text-gray-900 dark:text-white">
                 {isEditingLabels ? 'Edit Labels' : (isEditingDimensions ? 'Edit Dimensions' : 'Shape Preview')}
               </Dialog.Title>
@@ -223,7 +224,7 @@ export const CalculatorForm: React.FC<CalculatorFormProps> = ({
               </div>
             </div>
 
-            <div className="p-6">
+            <div className="p-6 overflow-y-auto">
                {isEditingLabels ? (
                  <div className="space-y-4 animate-in fade-in zoom-in-95 duration-200">
                     <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">Customize the names of the sides for your land plot.</p>
@@ -281,7 +282,7 @@ export const CalculatorForm: React.FC<CalculatorFormProps> = ({
                  </>
                )}
             </div>
-
+            </div>
           </Dialog.Content>
         </Dialog.Portal>
       </Dialog.Root>

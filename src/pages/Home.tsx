@@ -10,7 +10,7 @@ export const Home = () => {
     rightSideLength: '',
     bottomBaseLength: '',
     topSlantLength: '',
-    numberOfPartitions: '',
+    numberOfPartitions: '2',
     measureFrom: 'left'
   });
   const [results, setResults] = useState<Results | null>(null);
